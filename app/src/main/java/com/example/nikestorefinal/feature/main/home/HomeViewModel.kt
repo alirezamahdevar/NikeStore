@@ -6,7 +6,7 @@ import com.example.nikestorefinal.common.NikeSingleObserver
 import com.example.nikestorefinal.common.NikeViewModel
 import com.example.nikestorefinal.data.Banner
 import com.example.nikestorefinal.data.Product
-import com.example.nikestorefinal.data.SORT_POPULAR
+import com.example.nikestorefinal.data.SORT_LATEST
 import com.example.nikestorefinal.data.repo.BannerRepository
 import com.example.nikestorefinal.data.repo.ProductRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,12 +18,12 @@ class HomeViewModel(
 ) :
     NikeViewModel() {
     val productsLiveData = MutableLiveData<List<Product>>()
-    val bannerLiveData = MutableLiveData<List<Banner>>()
+    var bannersLiveData = MutableLiveData<List<Banner>>()
 
 
     init {
         progressBarLiveData.value = true
-        productRepository.getProducts(SORT_POPULAR)
+        productRepository.getProducts(SORT_LATEST)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally { progressBarLiveData.value = false }
@@ -31,6 +31,7 @@ class HomeViewModel(
                 override fun onSuccess(t: List<Product>) {
                     productsLiveData.value = t
                 }
+
             })
 
 
@@ -39,7 +40,7 @@ class HomeViewModel(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : NikeSingleObserver<List<Banner>>(compositeDisposable) {
                 override fun onSuccess(t: List<Banner>) {
-                    bannerLiveData.value = t
+                    bannersLiveData.value = t
                 }
             })
     }
@@ -65,3 +66,4 @@ class HomeViewModel(
 
     }
 }
+

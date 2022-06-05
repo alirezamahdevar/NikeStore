@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikestorefinal.EXTRA_KEY_DATA
@@ -56,9 +58,11 @@ class HomeFragment : NikeFragment(), ProductListAdapter.ProductEventListener {
         homeViewModel.progressBarLiveData.observe(viewLifecycleOwner) {
             setProgressIndicator(it)
         }
-        homeViewModel.bannerLiveData.observe(viewLifecycleOwner) {
+
+        homeViewModel.bannersLiveData.observe(viewLifecycleOwner) {
             Timber.i(it.toString())
             val bannerSliderAdapter = BannerSliderAdapter(this, it)
+
             bannerSliderViewPager.adapter = bannerSliderAdapter
             val viewPagerHeight = (((bannerSliderViewPager.measuredWidth - convertDpToPixel(
                 32f,

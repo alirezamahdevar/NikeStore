@@ -43,7 +43,7 @@
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/activity_shipping.xml" value="0.1" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/ali.xml" value="0.3375" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/fargment_cart.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/fargment_home.xml" value="0.1" />
+        <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/fargment_home.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/fargment_main.xml" value="0.21401752190237797" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/fargment_profile.xml" value="0.1" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/fragment_banner.xml" value="0.3055555555555556" />
@@ -59,6 +59,7 @@
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/item_product_large.xml" value="0.321875" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/item_product_small.xml" value="0.25" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/item_purchase_details.xml" value="0.3263534218590398" />
+        <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/view_cart_empty_state.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/view_default_empty_state.xml" value="0.32916666666666666" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/view_empty_state.xml" value="0.20833333333333334" />
         <entry key="..\:/Users/NHP/AndroidStudioProjects/NikeStoreFinal/app/src/main/res/layout/view_loading.xml" value="0.3375" />

@@ -11,7 +11,6 @@ data class Product(
     val discount: Int,
     @PrimaryKey(autoGenerate = false)
     val id: Int,
-
     val image: String,
     val previous_price: Int,
     val price: Int,
