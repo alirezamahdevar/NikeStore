@@ -25,6 +25,8 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import timber.log.Timber
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : NikeFragment(), ProductListAdapter.ProductEventListener {
     val homeViewModel: HomeViewModel by viewModel()
@@ -73,9 +75,21 @@ class HomeFragment : NikeFragment(), ProductListAdapter.ProductEventListener {
             bannerSliderViewPager.layoutParams = layoutParams
             sliderIndicator.setViewPager2(bannerSliderViewPager)
 
-
+            val timer = Timer()
+            timer.schedule(object : TimerTask() {
+                override fun run() {
+                    if (bannerSliderViewPager.currentItem < bannerSliderAdapter.itemCount - 1)
+                        bannerSliderViewPager.setCurrentItem(
+                            bannerSliderViewPager.currentItem + 1,
+                            true
+                        )
+                    else
+                        bannerSliderViewPager.setCurrentItem(0, true)
+                }
+            }, 3000, 3000)
         }
     }
+
 
     override fun onProductClick(product: Product) {
         startActivity(Intent(requireContext(), ProductDetailActivity::class.java).apply {
