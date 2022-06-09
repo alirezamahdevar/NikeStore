@@ -44,7 +44,7 @@ class CartViewModel(val cartRepository: CartRepository) : NikeViewModel() {
                 calculateAndPurchaseDetail()
 
                 val cartItemCount = EventBus.getDefault().getStickyEvent(CartItemCount::class.java)
-                cartItem?.let {
+                cartItemCount?.let {
                     it.count-=cartItem.count
                     EventBus.getDefault().postSticky(it)
                 }

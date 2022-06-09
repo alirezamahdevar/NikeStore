@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
-import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nikestorefinal.EXTRA_KEY_DATA
@@ -25,12 +23,14 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import timber.log.Timber
-import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : NikeFragment(), ProductListAdapter.ProductEventListener {
     val homeViewModel: HomeViewModel by viewModel()
     val productListAdapter: ProductListAdapter by inject { parametersOf(VIEW_TYPE_ROUND) }
+
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,7 +48,6 @@ class HomeFragment : NikeFragment(), ProductListAdapter.ProductEventListener {
 
 
         homeViewModel.productsLiveData.observe(viewLifecycleOwner) {
-            Timber.i(it.toString())
             productListAdapter.products = it as ArrayList<Product>
         }
         viewLatestProductsBtn.setOnClickListener {
@@ -60,34 +59,25 @@ class HomeFragment : NikeFragment(), ProductListAdapter.ProductEventListener {
         homeViewModel.progressBarLiveData.observe(viewLifecycleOwner) {
             setProgressIndicator(it)
         }
-
         homeViewModel.bannersLiveData.observe(viewLifecycleOwner) {
             Timber.i(it.toString())
-            val bannerSliderAdapter = BannerSliderAdapter(this, it)
 
-            bannerSliderViewPager.adapter = bannerSliderAdapter
-            val viewPagerHeight = (((bannerSliderViewPager.measuredWidth - convertDpToPixel(
-                32f,
-                requireContext()
-            )) * 173) / 328).toInt()
-            val layoutParams = bannerSliderViewPager.layoutParams
-            layoutParams.height = viewPagerHeight
-            bannerSliderViewPager.layoutParams = layoutParams
-            sliderIndicator.setViewPager2(bannerSliderViewPager)
+            bannerSliderViewPager.post {
+                val bannerSliderAdapter = BannerSliderAdapter(this, it)
+                bannerSliderViewPager.adapter = bannerSliderAdapter
+                val viewPagerHeight = (((bannerSliderViewPager.measuredWidth - convertDpToPixel(
+                    32f,
+                    requireContext()
+                )) * 173) / 328).toInt()
 
-            val timer = Timer()
-            timer.schedule(object : TimerTask() {
-                override fun run() {
-                    if (bannerSliderViewPager.currentItem < bannerSliderAdapter.itemCount - 1)
-                        bannerSliderViewPager.setCurrentItem(
-                            bannerSliderViewPager.currentItem + 1,
-                            true
-                        )
-                    else
-                        bannerSliderViewPager.setCurrentItem(0, true)
-                }
-            }, 3000, 3000)
+                val layoutParams = bannerSliderViewPager.layoutParams
+                layoutParams.height = viewPagerHeight
+                bannerSliderViewPager.layoutParams = layoutParams
+                sliderIndicator.setViewPager2(bannerSliderViewPager)
+
+            }
         }
+
     }
 
 

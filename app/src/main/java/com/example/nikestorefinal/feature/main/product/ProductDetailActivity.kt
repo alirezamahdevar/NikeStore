@@ -13,6 +13,7 @@ import com.example.nikestorefinal.common.NikeActivity
 import com.example.nikestorefinal.common.NikeCompletableObserver
 import com.example.nikestorefinal.common.formatPrice
 import com.example.nikestorefinal.data.Comment
+import com.example.nikestorefinal.data.Product
 import com.example.nikestorefinal.feature.main.ProductDetailViewModel
 import com.example.nikestorefinal.feature.main.product.comment.CommentListActivity
 import com.example.nikestorefinal.services.http.ImageLoadingService
