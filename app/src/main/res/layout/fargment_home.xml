@@ -35,12 +35,14 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="200dp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/bannerSliderViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintDimensionRatio="16:9"
+
                     android:layout_marginTop="16dp" />
 
                 <com.tbuonomo.viewpagerdotsindicator.DotsIndicator

@@ -3,6 +3,7 @@ package com.example.nikestorefinal.feature.main
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import com.example.nikestorefinal.EXTRA_KEY_DATA
+import com.example.nikestorefinal.common.NikeCompletableObserver
 import com.example.nikestorefinal.common.NikeSingleObserver
 import com.example.nikestorefinal.common.NikeViewModel
 import com.example.nikestorefinal.common.asyncNetWorkRequest
@@ -10,7 +11,9 @@ import com.example.nikestorefinal.data.Comment
 import com.example.nikestorefinal.data.Product
 import com.example.nikestorefinal.data.repo.CartRepository
 import com.example.nikestorefinal.data.repo.CommentRepository
+import com.example.nikestorefinal.data.repo.ProductRepository
 import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 
 class ProductDetailViewModel(
     bundle: Bundle,
@@ -34,7 +37,8 @@ class ProductDetailViewModel(
             })
     }
 
-    fun onAddToCartBtn(): Completable =
-        cartRepository.addToCart(productLiveData.value!!.id).ignoreElement()
+
+    fun onAddToCartBtn():Completable = cartRepository.addToCart(productLiveData.value!!.id).ignoreElement()
 
 }
+
